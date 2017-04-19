@@ -38,3 +38,6 @@ jspm_packages
 
 # Keys and tokens
 .env
+
+# Linter config
+.eslintrc.json
