@@ -39,8 +39,6 @@ client.on("message", (msg) => {
     return;
   }
 
-  console.log(command);
-  console.log(handlers[command]);
   const ret = handlers[command].handleMessage(command, parameter, msg);
   // if ret is undefined or not a thenable this just returns a resolved promise and the callback won't be called
   Promise.resolve(ret).catch(e => console.log("An error occured while handling", msg.content.green, ":\n", e));
