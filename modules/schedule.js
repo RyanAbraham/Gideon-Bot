@@ -1,6 +1,22 @@
 class Schedule {
   constructor() {
     this.commands = ["schedule"];
+    this.days = [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday"
+    ];
+    this.formats = [
+      "standard",
+      "modern",
+      "legacy",
+      "commander",
+      "vintage"
+    ];
     this.eventList = [
       { day: "Tuesday",   location: "Carta Magica",   format: "Modern" },
       { day: "Wednesday", location: "Wizard's Tower", format: "Modern" },
@@ -24,12 +40,20 @@ class Schedule {
       matchingEvents = this.eventList;
     } else {
       const searchTerm = parameter.toLowerCase();
+      var key;
+      if(this.days.indexOf(searchTerm) > -1) {
+        key = "day";
+      } else if(this.formats.indexOf(searchTerm) > -1){
+        key = "format";
+      } else {
+        key = "location";
+      }
       matchingEvents = this.eventList.filter(event => {
-        return event["day"].toLowerCase() === searchTerm;
+        return event[key].toLowerCase() === searchTerm;
       });
     }
     // If no events were found
-    if(matchingEvents === []) {
+    if(matchingEvents.length === 0) {
       response = "No events found!";
     } else {
       // Stringify each found event
@@ -37,7 +61,6 @@ class Schedule {
         response += event["day"] + " | " + event["location"] + " | " + event["format"] + "\n";
       });
     }
-    console.log(matchingEvents);
     return msg.channel.sendMessage(response);
   }
 }
