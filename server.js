@@ -1,11 +1,12 @@
 const Discord = require("discord.js");
 require("dotenv").config();
 
-const prefix = process.env.COMMAND_PREFIX || "!"; // Prefix for bot commands
-const modules = [
-  "schedule"
-];
+const prefix = process.env.COMMAND_PREFIX || "!";
 const handlers = {};
+const modules = [
+  "schedule",
+  "card"
+];
 
 modules.forEach(module => {
   const moduleObject = new (require("./modules/" + module + ".js"))();
@@ -39,9 +40,13 @@ client.on("message", (msg) => {
     return;
   }
 
+  // Handle the command and try to resolve the returned promise
   const ret = handlers[command].handleMessage(command, parameter, msg);
-  // if ret is undefined or not a thenable this just returns a resolved promise and the callback won't be called
-  Promise.resolve(ret).catch(e => console.log("An error occured while handling", msg.content.green, ":\n", e));
+  Promise
+    .resolve(ret)
+    .catch(e => {
+      console.log("Error in promise: " + e);
+    });
 });
 
 client.on("error", (e) => console.error(e));
