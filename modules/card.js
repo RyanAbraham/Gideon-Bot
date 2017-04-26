@@ -80,7 +80,7 @@ class Card {
     console.log(card);
     if(card === null) return "";
     let cardStr = "";
-    cardStr += card.name;
+    cardStr += "**" + card.name + "**";
     if(card.manaCost !== undefined)
       cardStr += " — " + card.manaCost;
     cardStr += "\n" + card.type + "\n";

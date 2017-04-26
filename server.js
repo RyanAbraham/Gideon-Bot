@@ -4,6 +4,7 @@ require("dotenv").config();
 const prefix = process.env.COMMAND_PREFIX || "!";
 const handlers = {};
 const modules = [
+  "help",
   "schedule",
   "card"
 ];
