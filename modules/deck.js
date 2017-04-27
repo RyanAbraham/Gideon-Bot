@@ -23,8 +23,23 @@ class Deck {
     request(parameter, (error, reqResponse, html) => {
       if(!error) {
         let $ = cheerio.load(html);
-        $(".cardlink").each((index) => {
-          response = index + ": " + $(this).text();
+        let cards = [];
+        response = "";
+        // Fetch card quantities
+        var cardAmounts = $(".deck_overview_card_amount");
+        for(var i=0; i<cardAmounts.length; i++){
+          var element = cardAmounts.eq(i);
+          cards.push([element.text().trim()]);
+        }
+        // Fetch card names
+        var cardNames = $(".deck_overview_card_name");
+        for(i=0; i<cardNames.length; i++){
+          element = cardNames.eq(i);
+          cards[i].push(element.text().trim());
+        }
+        // Build a visualization of the deck as the response
+        cards.sort().reverse().forEach((card) => {
+          response += card[0] + "x " + card[1] + "\n";
         });
       } else {
         response = "Error fetching URL";
