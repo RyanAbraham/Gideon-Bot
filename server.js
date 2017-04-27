@@ -1,12 +1,13 @@
 const Discord = require("discord.js");
 require("dotenv").config();
 
-const prefix = process.env.COMMAND_PREFIX || "!";
+const prefix = "$";
 const handlers = {};
 const modules = [
   "help",
   "schedule",
-  "card"
+  "card",
+  "deck"
 ];
 
 modules.forEach(module => {
@@ -23,10 +24,10 @@ modules.forEach(module => {
 const client = new Discord.Client();
 client.login(process.env.BOT_TOKEN);
 
-
 /* On bot login */
 client.on("ready", () => {
   console.log("Gideon bot online");
+  client.user.setGame("Magic: the Gideoning");
 });
 
 /* On any message in the server */
@@ -43,12 +44,11 @@ client.on("message", (msg) => {
 
   // Handle the command and try to resolve the returned promise
   const ret = handlers[command].handleMessage(command, parameter, msg);
-  Promise
-    .resolve(ret)
-    .catch(e => {
-      console.log("Error in promise: " + e);
-    });
+  Promise.resolve(ret).catch(e => {
+    console.log("Error in promise: " + e);
+  });
 });
 
+process.on("unhandledRejection", console.error);
 client.on("error", (e) => console.error(e));
 client.on("warn", (e) => console.warn(e));
