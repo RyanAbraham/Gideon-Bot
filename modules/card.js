@@ -95,16 +95,16 @@ class Card {
   stringifyCard(card) {
     if(card === null) return "";
     let cardStr = "";
-    cardStr += "**" + card.name + "**";
+    cardStr += `**${card.name}**`;
     if(card.manaCost !== undefined)
-      cardStr += " — " + card.manaCost;
-    cardStr += "\n" + card.type + "\n";
+      cardStr += ` — ${card.manaCost}`;
+    cardStr += `\n${card.type}\n`;
     if(card.text !== undefined)
-      cardStr += card.text + "\n";
+      cardStr += `${card.text}\n`;
     if(card.power !== undefined)
-      cardStr += card.power + " :dagger: / " + card.toughness + " :shield:\n";
+      cardStr += `${card.power} :dagger: / ${card.toughness} :shield:\n`;
     if(card.loyalty !== undefined)
-      cardStr += "Starting loyalty: " + card.loyalty + "\n";
+      cardStr += `Starting loyalty: ${card.loyalty}\n`;
     cardStr += card.imageUrl;
     return cardStr;
   }

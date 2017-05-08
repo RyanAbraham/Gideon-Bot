@@ -47,7 +47,7 @@ class Deck {
         });
         // Generate several random hands from the deck as the response
         for(i=0; i<5; i++) {
-          response += "Sample Hand " + (i+1) + ": ";
+          response += `Sample Hand ${i+1}: `;
           response += this.shuffle(cardsExpanded).slice(0,7).sort().join(" | ") + "\n";
         }
       } else {
@@ -60,14 +60,11 @@ class Deck {
   // Knuth Shuffle algorithm
   shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
       // And swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];

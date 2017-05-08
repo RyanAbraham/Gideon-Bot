@@ -17,7 +17,7 @@ modules.forEach(module => {
       handlers[command] = moduleObject;
     });
   } else {
-    console.log("Module " + module + " could not be loaded");
+    console.log(`Module ${module} could not be loaded`);
   }
 });
 
@@ -45,7 +45,7 @@ client.on("message", (msg) => {
   // Handle the command and try to resolve the returned promise
   const ret = handlers[command].handleMessage(command, parameter, msg);
   Promise.resolve(ret).catch(e => {
-    console.log("Error in promise: " + e);
+    console.log(`Error in promise: ${e}`);
   });
 });
 

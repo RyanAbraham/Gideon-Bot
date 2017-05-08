@@ -59,7 +59,7 @@ class Schedule {
     } else {
       // Stringify each found event
       matchingEvents.forEach(event => {
-        response += event["day"] + " | " + event["location"] + " | " + event["format"] + "\n";
+        response += `${event["day"]} | ${event["location"]} | ${event["format"]}\n`;
       });
     }
     return msg.channel.sendMessage(response);
