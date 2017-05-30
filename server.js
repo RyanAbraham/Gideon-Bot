@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 require("dotenv").config();
+import PREFIX from "./constants.js";
 
-const prefix = "$";
 const handlers = {};
 const modules = [
   "help",
@@ -10,6 +10,7 @@ const modules = [
   "deck"
 ];
 
+/* Load modules */
 modules.forEach(module => {
   const moduleObject = new (require("./modules/" + module + ".js"))();
   if(moduleObject) {
@@ -21,6 +22,7 @@ modules.forEach(module => {
   }
 });
 
+/* Bot logs into server */
 const client = new Discord.Client();
 client.login(process.env.BOT_TOKEN);
 
@@ -32,11 +34,11 @@ client.on("ready", () => {
 
 /* On any message in the server */
 client.on("message", (msg) => {
-  const query = msg.content.substr(prefix.length).split(" ");
+  const query = msg.content.substr(PREFIX.length).split(" ");
   const command = query[0].toLowerCase();
   const parameter = query.length > 1 ? query.slice(1).join(" ") : "";
   // If the command prefix isn't used or the author is a bot, ignore the message
-  if(!msg.content.startsWith(prefix) ||
+  if(!msg.content.startsWith(PREFIX) ||
       msg.author.bot ||
       !handlers[command]) {
     return;

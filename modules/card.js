@@ -1,3 +1,6 @@
+/**
+ * Fetches a card based on requested card name
+ */
 const mtg = require("mtgsdk");
 
 class Card {

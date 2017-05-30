@@ -1,3 +1,10 @@
+/**
+ * Display tournaments and events
+ * Usage: schedule [Day/Location/Format]
+ * Day      - Show events running on a specific day
+ * Location - Show events running at a specific location
+ * Format   - Show events of a certain format
+ */
 class Schedule {
   constructor() {
     this.commands = ["schedule"];
