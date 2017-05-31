@@ -1,15 +1,14 @@
 /**
  * Responds with help for all commands
   */
-import PREFIX from "./constants.js";
-
+require("dotenv").config();
 class Help {
   constructor() {
     this.commands = ["help"];
-    this.helpText = `${PREFIX}card [cardname] -> Search for a card`
-      + `\n${PREFIX}schedule -> Display the event schedule`
-      + `\n${PREFIX}deck [deckurl] -> Display a deck`
-      + `\n${PREFIX}hand [deckurl] -> Display sample hands of a deck`;
+    this.helpText = `${process.env.PREFIX}card [cardname] -> Search for a card`
+      + `\n${process.env.PREFIX}schedule -> Display the event schedule`
+      + `\n${process.env.PREFIX}deck [deckurl] -> Display a deck`
+      + `\n${process.env.PREFIX}hand [deckurl] -> Deal sample hands from a deck`;
   }
 
   getCommands() {

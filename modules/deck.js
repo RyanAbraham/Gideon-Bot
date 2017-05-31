@@ -6,7 +6,7 @@ const cheerio = require("cheerio");
 
 class Deck {
   constructor() {
-    this.commands = ["deck"];
+    this.commands = ["deck", "shuffle", "deal"];
     this.timeout = 2000;
   }
 

@@ -1,13 +1,13 @@
 const Discord = require("discord.js");
 require("dotenv").config();
-import PREFIX from "./constants.js";
 
 const handlers = {};
 const modules = [
   "help",
   "schedule",
   "card",
-  "deck"
+  "deck",
+  "log"
 ];
 
 /* Load modules */
@@ -34,17 +34,17 @@ client.on("ready", () => {
 
 /* On any message in the server */
 client.on("message", (msg) => {
-  const query = msg.content.substr(PREFIX.length).split(" ");
+  const query = msg.content.substr(process.env.PREFIX.length).split(" ");
   const command = query[0].toLowerCase();
   const parameter = query.length > 1 ? query.slice(1).join(" ") : "";
   // If the command prefix isn't used or the author is a bot, ignore the message
-  if(!msg.content.startsWith(PREFIX) ||
+  if(!msg.content.startsWith(process.env.PREFIX) ||
       msg.author.bot ||
       !handlers[command]) {
     return;
   }
 
-  // Handle the command and try to resolve the returned promise
+  // Handle the incoming command and try to resolve the returned promise
   const ret = handlers[command].handleMessage(command, parameter, msg);
   Promise.resolve(ret).catch(e => {
     console.log(`Error in promise: ${e}`);
