@@ -7,7 +7,7 @@ class Card {
   constructor() {
     this.commands = ["card"];
     this.timeout = 750;
-    this.notFoundMessage = "Card not found!";
+    this.notFoundMsg = "Card not found!";
     this.apiurl = "https://api.magicthegathering.io/v1/cards";
   }
 
@@ -16,7 +16,7 @@ class Card {
   }
 
   handleMessage(command, parameter, msg) {
-    let response = this.notFoundMessage;
+    let response = this.notFoundMsg;
     let cards = [];
     if(parameter === "") {
       response  = "Please specify a card!";
@@ -53,7 +53,7 @@ class Card {
     let closestCard = null;
     let response = "";
     if(cards === []) {
-      return this.notFoundMessage;
+      return this.notFoundMsg;
     }
     // First loop: See if any cards match the search exactly
     for(var card of cards) {
@@ -92,7 +92,7 @@ class Card {
       });
       response += similarCards.join(" | ");
     }
-    return response || this.notFoundMessage;
+    return response || this.notFoundMsg;
   }
 
   stringifyCard(card) {
