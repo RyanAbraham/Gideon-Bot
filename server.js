@@ -12,7 +12,7 @@ const modules = [
 
 /* Load modules */
 modules.forEach(module => {
-  const moduleObject = new (require("./modules/" + module + ".js"))();
+  const moduleObject = new (require(`./modules/${module}.js`))();
   if(moduleObject) {
     moduleObject.getCommands().forEach(command => {
       handlers[command] = moduleObject;
@@ -37,7 +37,7 @@ client.on("message", (msg) => {
   const query = msg.content.substr(process.env.PREFIX.length).split(" ");
   const command = query[0].toLowerCase();
   const parameter = query.length > 1 ? query.slice(1).join(" ") : "";
-  // If the command prefix isn't used or the author is a bot, ignore the message
+  // Ignore the message if no prefix, sender is a bot, or command doesn't exist
   if(!msg.content.startsWith(process.env.PREFIX) ||
       msg.author.bot ||
       !handlers[command]) {

@@ -7,8 +7,8 @@
  */
 class Schedule {
   constructor() {
-    this.commands = ["schedule"];
-    this.days = [
+    this.COMMANDS = ["schedule"];
+    this.DAYS = [
       "monday",
       "tuesday",
       "wednesday",
@@ -17,14 +17,14 @@ class Schedule {
       "saturday",
       "sunday"
     ];
-    this.formats = [
+    this.FORMATS = [
       "standard",
       "modern",
       "legacy",
       "commander",
       "vintage"
     ];
-    this.eventList = [
+    this.EVENTS = [
       { day: "Tuesday",   location: "Carta Magica",   format: "Modern" },
       { day: "Wednesday", location: "Wizard's Tower", format: "Modern" },
       { day: "Wednesday", location: "Gaming Kingdom", format: "Modern" },
@@ -36,27 +36,27 @@ class Schedule {
   }
 
   getCommands() {
-    return this.commands;
+    return this.COMMANDS;
   }
 
   handleMessage(command, parameter, msg) {
-    console.log(this.eventList);
+    console.log(this.EVENTS);
     let response = "";
     let matchingEvents = [];
     // Find all events matching the search if there's any parameters
     if(parameter === "") {
-      matchingEvents = this.eventList;
+      matchingEvents = this.EVENTS;
     } else {
       const searchTerm = parameter.toLowerCase();
       var key;
-      if(this.days.indexOf(searchTerm) > -1) {
+      if(this.DAYS.indexOf(searchTerm) > -1) {
         key = "day";
-      } else if(this.formats.indexOf(searchTerm) > -1){
+      } else if(this.FORMATS.indexOf(searchTerm) > -1){
         key = "format";
       } else {
         key = "location";
       }
-      matchingEvents = this.eventList.filter(event => {
+      matchingEvents = this.EVENTS.filter(event => {
         return event[key].toLowerCase() === searchTerm;
       });
     }

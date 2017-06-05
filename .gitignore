@@ -41,3 +41,6 @@ jspm_packages
 
 # Linter config
 .eslintrc.json
+
+# Database files
+*.db

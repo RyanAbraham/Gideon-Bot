@@ -21,7 +21,8 @@
     "cheerio": "^0.22.0",
     "discord.js": "^11.0.0",
     "mtgsdk": "^0.2.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

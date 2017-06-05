@@ -1,22 +1,23 @@
 /**
  * Responds with help for all commands
-  */
+ */
 require("dotenv").config();
+const PFX = process.env.PREFIX;
 class Help {
   constructor() {
-    this.commands = ["help"];
-    this.helpText = `${process.env.PREFIX}card [cardname] -> Search for a card`
-      + `\n${process.env.PREFIX}schedule -> Display the event schedule`
-      + `\n${process.env.PREFIX}deck [deckurl] -> Display a deck`
-      + `\n${process.env.PREFIX}hand [deckurl] -> Deal sample hands from a deck`;
+    this.COMMANDS = ["help"];
+    this.HELP_TEXT = `${PFX}card [cardname] -> Search for a card`
+      + `\n${PFX}schedule -> Display the event schedule`
+      + `\n${PFX}deck [deckurl] -> Deal sample hands from a deck`
+      + `\n${PFX}log (deck) {(wins) (losses) (opp deck)} -> Record a tournament`;
   }
 
   getCommands() {
-    return this.commands;
+    return this.COMMANDS;
   }
 
   handleMessage(command, parameter, msg) {
-    let response = this.helpText;
+    let response = this.HELP_TEXT;
     return msg.channel.sendMessage(response);
   }
 }

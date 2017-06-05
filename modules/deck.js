@@ -6,12 +6,12 @@ const cheerio = require("cheerio");
 
 class Deck {
   constructor() {
-    this.commands = ["deck", "shuffle", "deal"];
-    this.timeout = 2000;
+    this.COMMANDS = ["deck", "shuffle", "deal", "hand"];
+    this.TIMEOUT = 2000;
   }
 
   getCommands() {
-    return this.commands;
+    return this.COMMANDS;
   }
 
   handleMessage(command, parameter, msg) {

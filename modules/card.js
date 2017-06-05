@@ -5,30 +5,30 @@ const mtg = require("mtgsdk");
 
 class Card {
   constructor() {
-    this.commands = ["card"];
-    this.timeout = 750;
+    this.COMMANDS = ["card"];
+    this.TIMEOUT = 750;
     this.notFoundMsg = "Card not found!";
     this.apiurl = "https://api.magicthegathering.io/v1/cards";
   }
 
   getCommands() {
-    return this.commands;
+    return this.COMMANDS;
   }
 
   handleMessage(command, parameter, msg) {
     let response = this.notFoundMsg;
     let cards = [];
     if(parameter === "") {
+      // If no arguments, can't search for a card
       response  = "Please specify a card!";
       return msg.channel.sendMessage(response);
     }
-    // If no arguments, can't search for a card
     cards = this.findCards(parameter);
     // Use timeout to wait for all the matching cards to be found
     setTimeout(() => {
       response = this.buildResponse(cards, parameter);
       return msg.channel.sendMessage(response);
-    }, this.timeout);
+    }, this.TIMEOUT);
   }
 
   findCards(searchTerm) {
