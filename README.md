@@ -1,5 +1,5 @@
 # Introduction
-Gideon Bot is a Discord bot for any MTG related servers. Card fetching, deck goldfishing, and tournament schedules are all currently supported!
+Gideon Bot is a Discord bot for any MTG related servers. Card fetching, deck goldfishing, and tournament scheduling are all currently supported!
 
 # Setup
 1. Download or clone this repository.
