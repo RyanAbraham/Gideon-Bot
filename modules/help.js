@@ -6,10 +6,9 @@ const PFX = process.env.PREFIX;
 class Help {
   constructor() {
     this.COMMANDS = ["help"];
-    this.HELP_TEXT = `${PFX}card [cardname] -> Search for a card`
-      + `\n${PFX}schedule -> Display the event schedule`
-      + `\n${PFX}deck [deckurl] -> Deal sample hands from a deck`
-      + `\n${PFX}log (deck) {(wins) (losses) (opp deck)} -> Record a tournament`;
+    this.HELP_TEXT = `${PFX}card <cardname> -> Search for a card`
+      + `\n${PFX}schedule <day|format|location> -> Display the event schedule`
+      + `\n${PFX}deck <deckURL> -> Deal sample hands from a deck`
   }
 
   getCommands() {
