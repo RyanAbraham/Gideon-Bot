@@ -23,8 +23,7 @@ class Log {
 
     // Insert sample tournament into the database
     db.serialize(function() {
-      db.run("INSERT INTO Tournaments(user_id, deck)"
-           + "VALUES (1, 'Affinity')");
+      db.run("INSERT INTO Tournaments(user_id, deck) VALUES (1, 'Affinity')");
     });
 
     db.close();
