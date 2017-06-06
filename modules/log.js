@@ -2,7 +2,7 @@
  * Logs game and tournament history for individual users
  */
 const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("users.db");
+const db = new sqlite3.Database("logs.db");
 class Log {
   constructor() {
     this.COMMANDS = ["log", "record"];
