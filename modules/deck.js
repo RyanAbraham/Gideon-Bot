@@ -53,7 +53,7 @@ class Deck {
           response += this.shuffle(cardsExpanded).slice(0,7).sort().join(" | ") + "\n";
         }
       } else {
-        response = "Error fetching URL";
+        response = "Error fetching URL or URL is not a valid deck";
       }
       return msg.channel.sendMessage(response);
     });
