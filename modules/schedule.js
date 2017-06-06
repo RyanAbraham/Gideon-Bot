@@ -40,7 +40,6 @@ class Schedule {
   }
 
   handleMessage(command, parameter, msg) {
-    console.log(this.EVENTS);
     let response = "";
     let matchingEvents = [];
     // Find all events matching the search if there's any parameters
