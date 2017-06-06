@@ -8,7 +8,7 @@ class Help {
     this.COMMANDS = ["help"];
     this.HELP_TEXT = `${PFX}card <cardname> -> Search for a card`
       + `\n${PFX}schedule <day|format|location> -> Display the event schedule`
-      + `\n${PFX}deck <deckURL> -> Deal sample hands from a deck`
+      + `\n${PFX}deck <deckURL> -> Deal sample hands from a deck`;
   }
 
   getCommands() {
