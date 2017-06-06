@@ -23,7 +23,7 @@ $card <cardname>
 Ex: $card Black Lotus
 ```
 
-### Scheduler
+### Tournament Scheduling
 Fetches event dates, formats, and locations. Support for custom events coming soon!
 ```
 $schedule <day|format|location>
